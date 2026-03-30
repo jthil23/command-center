@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/jthil -maxdepth 3 -type f \\\\\\(-name CLAUDE.md -o -name README.md -o -name *sol* -o -name *homeserver* -o -name *docker* \\\\\\))",
+      "Bash(find /c/Users/jthil -type f \\\\\\(-name docker-compose* -o -name Dockerfile -o -name *.env -o -name CLAUDE.md \\\\\\))",
+      "Bash(ls:*)",
+      "Bash(find /c/Users/jthil -maxdepth 5 -type f -iname *docker* -o -iname *unraid* -o -iname *homeserver* -o -iname *sol*)",
+      "Bash(bash \"C:/Users/jthil/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.6/skills/brainstorming/scripts/start-server.sh\" --project-dir \"G:/Docker/Command Center\")",
+      "WebSearch",
+      "mcp__plugin_github_github__get_me",
+      "mcp__plugin_github_github__create_repository",
+      "Bash(docker login:*)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --yes)",
+      "Bash(npx create-next-app@latest command-center-tmp --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --yes)",
+      "Bash(cp -r command-center-tmp/.gitignore.new command-center-tmp/.gitignore)",
+      "Bash(for f:*)",
+      "Bash(do cp:*)",
+      "Bash(done)",
+      "Bash(cp command-center-tmp/.gitignore .gitignore.nextjs)",
+      "Bash(cd:*)",
+      "Bash(npm install:*)",
+      "Bash(npx shadcn@latest init -d)",
+      "Bash(npx shadcn@latest init -d --yes)"
+    ]
+  }
+}
