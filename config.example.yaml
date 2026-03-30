@@ -1,0 +1,59 @@
+# Command Center Configuration
+# Copy to config.yaml and fill in your API keys
+
+services:
+  sonarr:
+    url: http://192.168.1.103:8989
+    apiKey: "your-sonarr-api-key"
+  radarr:
+    url: http://192.168.1.103:7878
+    apiKey: "your-radarr-api-key"
+  prowlarr:
+    url: http://192.168.1.103:9696
+    apiKey: "your-prowlarr-api-key"
+  bazarr:
+    url: http://192.168.1.103:6767
+    apiKey: "your-bazarr-api-key"
+  whisparr:
+    url: http://192.168.1.103:6969
+    apiKey: "your-whisparr-api-key"
+  seerr:
+    url: http://192.168.1.103:5055
+    apiKey: "your-seerr-api-key"
+  nzbget:
+    url: http://192.168.1.103:6789
+    apiKey: "your-nzbget-api-key"
+  tdarr:
+    url: http://192.168.1.103:8265
+  plex:
+    url: http://192.168.1.103:32400
+    token: "your-plex-token"
+  prometheus:
+    url: http://192.168.1.103:9090
+  nodered:
+    url: http://192.168.1.103:1880
+  homeassistant:
+    url: http://192.168.1.103:8123
+    token: "your-ha-long-lived-token"
+
+ssh:
+  host: 192.168.1.103
+  user: root
+  keyPath: /app/ssh/id_ed25519
+
+hunt:
+  defaults:
+    batchSize: 10
+    intervalMinutes: 60
+    hourlyCap: 50
+    queueThreshold: 25
+  sonarr:
+    enabled: true
+    searchMode: "seasonPack"
+    batchSize: 5
+  radarr:
+    enabled: true
+    batchSize: 10
+
+polling:
+  defaultIntervalSeconds: 30
