@@ -48,3 +48,5 @@ config.yaml
 # IDE
 .idea/
 .vscode/
+
+/generated/prisma
