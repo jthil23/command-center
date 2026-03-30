@@ -1,0 +1,14 @@
+services:
+  command-center:
+    image: jthil23/command-center:latest
+    container_name: command-center
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config.yaml:/app/config.yaml:ro
+      - ~/.ssh/id_ed25519:/app/ssh/id_ed25519:ro
+    environment:
+      - DATABASE_URL=mysql://mainUser:mainPass@192.168.1.103:3366/command_center
+      - CONFIG_PATH=/app/config.yaml
+    restart: unless-stopped
