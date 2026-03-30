@@ -20,7 +20,10 @@
       "Bash(cd:*)",
       "Bash(npm install:*)",
       "Bash(npx shadcn@latest init -d)",
-      "Bash(npx shadcn@latest init -d --yes)"
+      "Bash(npx shadcn@latest init -d --yes)",
+      "Bash(npx shadcn@latest add button card badge input label table tabs separator scroll-area sheet dialog dropdown-menu select switch toast sonner tooltip --yes)",
+      "Bash(npx shadcn@latest add button card badge input label table tabs separator scroll-area sheet dialog dropdown-menu select switch sonner tooltip --yes)",
+      "Bash(npm run:*)"
     ]
   }
 }
