@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model HuntState {
+  id          Int      @id @default(autoincrement())
+  app         String   @db.VarChar(50)
+  itemId      String   @db.VarChar(100) @map("item_id")
+  itemTitle   String?  @db.VarChar(500) @map("item_title")
+  processedAt DateTime @default(now()) @map("processed_at")
+  expiresAt   DateTime @map("expires_at")
+
+  @@unique([app, itemId])
+  @@index([app, expiresAt])
+  @@map("hunt_state")
+}
+
+model HuntRun {
+  id            Int       @id @default(autoincrement())
+  app           String    @db.VarChar(50)
+  runType       String    @db.VarChar(20) @map("run_type")
+  itemsFound    Int       @default(0) @map("items_found")
+  itemsSearched Int       @default(0) @map("items_searched")
+  errors        Int       @default(0)
+  duration      Int       @default(0)
+  status        String    @db.VarChar(20)
+  message       String?   @db.Text
+  startedAt     DateTime  @default(now()) @map("started_at")
+  completedAt   DateTime? @map("completed_at")
+
+  @@index([app, startedAt])
+  @@map("hunt_runs")
+}
+
+model ScheduledJob {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(200)
+  cronExpr  String   @db.VarChar(100) @map("cron_expr")
+  jobType   String   @db.VarChar(50) @map("job_type")
+  config    String   @db.Text
+  enabled   Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  executions JobExecution[]
+
+  @@map("scheduled_jobs")
+}
+
+model JobExecution {
+  id        Int       @id @default(autoincrement())
+  jobId     Int       @map("job_id")
+  status    String    @db.VarChar(20)
+  output    String?   @db.Text
+  error     String?   @db.Text
+  startedAt DateTime  @default(now()) @map("started_at")
+  endedAt   DateTime? @map("ended_at")
+
+  job ScheduledJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@index([jobId, startedAt])
+  @@map("job_executions")
+}
+
+model ActivityLog {
+  id        Int      @id @default(autoincrement())
+  source    String   @db.VarChar(50)
+  type      String   @db.VarChar(50)
+  message   String   @db.VarChar(500)
+  metadata  String?  @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@index([source])
+  @@map("activity_log")
+}
