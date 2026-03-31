@@ -195,8 +195,8 @@ export function HuntDashboard() {
               <div className="flex items-center gap-2 border-t border-border/40 pt-3">
                 <Select
                   value={runTypes[s.app] || "missing"}
-                  onValueChange={(val) =>
-                    setRunTypes((prev) => ({ ...prev, [s.app]: val }))
+                  onValueChange={(val: string | null) =>
+                    setRunTypes((prev) => ({ ...prev, [s.app]: val ?? "missing" }))
                   }
                 >
                   <SelectTrigger size="sm" className="flex-1">

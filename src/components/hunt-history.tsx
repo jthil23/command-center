@@ -101,7 +101,7 @@ export function HuntHistory() {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span>Hunt History</span>
-          <Select value={appFilter} onValueChange={setAppFilter}>
+          <Select value={appFilter} onValueChange={(val: string | null) => setAppFilter(val ?? "")}>
             <SelectTrigger size="sm" className="w-36">
               <SelectValue />
             </SelectTrigger>

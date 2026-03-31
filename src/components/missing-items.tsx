@@ -76,7 +76,7 @@ export function MissingItems() {
         <CardTitle className="flex flex-wrap items-center gap-3">
           <span>Missing & Cutoff Unmet</span>
           <div className="ml-auto flex items-center gap-2">
-            <Select value={app} onValueChange={(val) => setApp(val as AppOption)}>
+            <Select value={app} onValueChange={(val: string | null) => setApp((val ?? "sonarr") as AppOption)}>
               <SelectTrigger size="sm">
                 <SelectValue />
               </SelectTrigger>
@@ -85,7 +85,7 @@ export function MissingItems() {
                 <SelectItem value="radarr">Radarr</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={type} onValueChange={(val) => setType(val as TypeOption)}>
+            <Select value={type} onValueChange={(val: string | null) => setType((val ?? "missing") as TypeOption)}>
               <SelectTrigger size="sm">
                 <SelectValue />
               </SelectTrigger>
