@@ -13,6 +13,8 @@ env:
 jobs:
   lint-and-typecheck:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: mysql://user:pass@localhost:3306/command_center
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,6 +28,8 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: mysql://user:pass@localhost:3306/command_center
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

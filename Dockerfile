@@ -12,6 +12,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Dummy DATABASE_URL for build-time Prisma generate and Next.js build
+# The real URL is provided at runtime via environment variable
+ENV DATABASE_URL="mysql://build:build@localhost:3306/build"
+
 # Generate Prisma client (v7 outputs to generated/prisma/)
 RUN npx prisma generate
 
